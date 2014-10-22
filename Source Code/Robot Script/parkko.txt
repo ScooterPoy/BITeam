@@ -1,0 +1,33 @@
+*** Settings ***
+Library  Selenium2Library
+
+*** Variables ***
+
+*** Testcases ***
+Park-Ko KittyWorld
+	Open Browser  54.68.40.99/Cashier.html
+	Input Text    txtRegistration    สฬ24520
+	Select From List    cmbProvince    2
+	Click Button   btnPayment
+
+Verify fee
+	Element Should Contain    lbRegistration    สฬ๒๔๕๒๐
+
+	Element Should Contain    lbParkFee    ๑๔๐.๐๐
+
+Money Change
+
+	Input Text    txtReceiveMoney     500
+	Click Button    btnChange
+	Element Should Contain    lbChangeMoney   ๓๖๐.๐๐
+
+Verify Money
+	Element Should Contain    lbBankNote500     ๐
+	Element Should Contain    lbBankNote100     ๓
+	Element Should Contain    lbBankNote50     ๑
+	Element Should Contain    lbBankNote20     ๐
+	Element Should Contain    lbCoin10     ๑
+	Element Should Contain    lbCoin5     ๐
+       
+
+*** Keywords ***
